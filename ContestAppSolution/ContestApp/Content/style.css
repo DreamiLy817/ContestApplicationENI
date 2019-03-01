@@ -1,0 +1,13 @@
+﻿
+body nav.navbar {
+    background: #3498db!important;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+body nav.navbar a {
+    color: white !important;
+}
+
+body {
+    padding-top: 0 !important;
+}
