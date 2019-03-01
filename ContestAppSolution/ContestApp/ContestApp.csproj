@@ -194,6 +194,7 @@
     <Compile Include="Models\EpreuveViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mappers\EpreuveMapper.cs" />
     <Compile Include="Models\PointOfInterestViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\VilleViewModel.cs" />
