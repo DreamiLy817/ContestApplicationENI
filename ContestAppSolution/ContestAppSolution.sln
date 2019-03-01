@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContestApp", "ContestApp\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContestApp.Tests", "ContestApp.Tests\ContestApp.Tests.csproj", "{7929F495-E196-475A-8EEC-628EED3B225A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BO", "BO\BO.csproj", "{18ACD033-DF9B-4FAD-B871-B0723B1C2ECB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7929F495-E196-475A-8EEC-628EED3B225A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7929F495-E196-475A-8EEC-628EED3B225A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7929F495-E196-475A-8EEC-628EED3B225A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18ACD033-DF9B-4FAD-B871-B0723B1C2ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18ACD033-DF9B-4FAD-B871-B0723B1C2ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18ACD033-DF9B-4FAD-B871-B0723B1C2ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18ACD033-DF9B-4FAD-B871-B0723B1C2ECB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
