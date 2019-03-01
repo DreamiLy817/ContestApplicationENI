@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201903010929199_Base.Designer.cs">
       <DependentUpon>201903010929199_Base.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903011315308_Connexion.cs" />
+    <Compile Include="Migrations\201903011315308_Connexion.Designer.cs">
+      <DependentUpon>201903011315308_Connexion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Course.cs" />
@@ -74,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903010929199_Base.resx">
       <DependentUpon>201903010929199_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903011315308_Connexion.resx">
+      <DependentUpon>201903011315308_Connexion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
