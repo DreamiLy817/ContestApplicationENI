@@ -187,6 +187,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903011318506_Connexion.cs" />
+    <Compile Include="Migrations\201903011318506_Connexion.Designer.cs">
+      <DependentUpon>201903011318506_Connexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategorieViewModel.cs" />
     <Compile Include="Models\CourseViewModel.cs" />
@@ -319,6 +324,11 @@
       <Project>{18acd033-df9b-4fad-b871-b0723b1c2ecb}</Project>
       <Name>BO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903011318506_Connexion.resx">
+      <DependentUpon>201903011318506_Connexion.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
