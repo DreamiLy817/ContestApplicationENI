@@ -10,7 +10,7 @@ namespace ContestApp.Models
         public int Id { get; set; }
         public string Nom { get; set; }
         public decimal Distance { get; set; }
-        public CategorieViewModel Categorie { get; set; }
-        public EpreuveViewModel Epreuve { get; set; }
+        public string NomCategorie { get; set; }
+        public string NomEpreuve { get; set; }
     }
 }
