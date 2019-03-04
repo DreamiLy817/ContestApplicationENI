@@ -1,4 +1,5 @@
-﻿using BO.Models;
+﻿using BO;
+using BO.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,18 @@ namespace ContestApp.Models.Mappers
 
             };
         }
+        public static Epreuve Map(EpreuveViewModel vm, Epreuve epreuve, ContextContest db)
+        {
 
-       
+            if (epreuve == null)
+            {
+                epreuve = new Epreuve();
+                db.Epreuves.Add(epreuve);
+            }
+            epreuve.Id = vm.Id;
+
+            return epreuve;
+        }
+
     }
 }

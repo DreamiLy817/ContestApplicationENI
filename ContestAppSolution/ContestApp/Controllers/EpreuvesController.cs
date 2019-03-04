@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using BO.Models;
+using ContestApp.Models.Mappers;
+using ContestApp.Models;
 
 namespace ContestApp.Controllers
 {
@@ -18,7 +20,8 @@ namespace ContestApp.Controllers
         // GET: Epreuves
         public ActionResult Index()
         {
-            return View(db.Epreuves.ToList());
+            List<Epreuve> epreuve = db.Epreuves.ToList();
+            return View(epreuve.Select(e => EpreuveMapper.Map(e)));
         }
 
         // GET: Epreuves/Details/5
@@ -42,23 +45,7 @@ namespace ContestApp.Controllers
             return View();
         }
 
-        // POST: Epreuves/Create
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nom,Distance,Date,Inscription")] Epreuve epreuve)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Epreuves.Add(epreuve);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(epreuve);
-        }
-
+      
         // GET: Epreuves/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,6 +75,25 @@ namespace ContestApp.Controllers
                 return RedirectToAction("Index");
             }
             return View(epreuve);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEdit([Bind(Include = "Id,Nom,Distance,Date,Inscription")] EpreuveViewModel epreuveVM)
+        {
+            Epreuve epreuve = db.Epreuves.Find(epreuveVM.Id);
+
+            epreuve = EpreuveMapper.Map(epreuveVM, epreuve, db);
+
+            if (ModelState.IsValid)
+            {
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+
+            return View("CreateEdit", samourai);
         }
 
         // GET: Epreuves/Delete/5

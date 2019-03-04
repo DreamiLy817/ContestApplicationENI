@@ -314,6 +314,7 @@
     <Content Include="Views\Epreuves\Details.cshtml" />
     <Content Include="Views\Epreuves\Edit.cshtml" />
     <Content Include="Views\Epreuves\Index.cshtml" />
+    <Content Include="Views\Epreuves\CreateEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
