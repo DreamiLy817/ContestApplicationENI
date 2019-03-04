@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201903011315308_Connexion.Designer.cs">
       <DependentUpon>201903011315308_Connexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903041311273_AddDisplayConfigTable.cs" />
+    <Compile Include="Migrations\201903041311273_AddDisplayConfigTable.Designer.cs">
+      <DependentUpon>201903041311273_AddDisplayConfigTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Course.cs" />
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903011315308_Connexion.resx">
       <DependentUpon>201903011315308_Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903041311273_AddDisplayConfigTable.resx">
+      <DependentUpon>201903041311273_AddDisplayConfigTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

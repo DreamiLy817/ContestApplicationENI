@@ -13,5 +13,7 @@ namespace BO.Models
         public string Password { get; set; }
         public Boolean Active { get; set; }
         public Role Role { get; set; }
+        //public DisplayConfiguration DisplayConfiguration { get; set; }
     }
+
 }

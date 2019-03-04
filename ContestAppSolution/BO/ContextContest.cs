@@ -24,6 +24,8 @@
         public virtual DbSet<Ville> Ville { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<DisplayConfiguration> DisplayConfiguration { get; set; }
+    
 
         // Ajoutez un DbSet pour chaque type d'entité à inclure dans votre modèle. Pour plus d'informations 
         // sur la configuration et l'utilisation du modèle Code First, consultez http://go.microsoft.com/fwlink/?LinkId=390109.
