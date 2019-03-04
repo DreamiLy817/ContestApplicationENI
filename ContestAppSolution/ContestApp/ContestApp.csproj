@@ -182,6 +182,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -207,7 +208,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Mappers\CategorieMapper.cs" />
-    <Compile Include="Models\Mappers\EpreuveMapper.cs" />
     <Compile Include="Models\Mappers\PointOfInterestMapper.cs" />
     <Compile Include="Models\PointOfInterestViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
@@ -320,6 +320,7 @@
     <Content Include="Views\Epreuves\Details.cshtml" />
     <Content Include="Views\Epreuves\Edit.cshtml" />
     <Content Include="Views\Epreuves\Index.cshtml" />
+    <Content Include="Views\Epreuves\CreateEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
