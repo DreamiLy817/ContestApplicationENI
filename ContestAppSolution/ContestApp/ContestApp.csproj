@@ -320,6 +320,16 @@
     <Content Include="Views\Epreuves\Details.cshtml" />
     <Content Include="Views\Epreuves\Edit.cshtml" />
     <Content Include="Views\Epreuves\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\PointOfInterests\Create.cshtml" />
+    <Content Include="Views\PointOfInterests\Delete.cshtml" />
+    <Content Include="Views\PointOfInterests\Details.cshtml" />
+    <Content Include="Views\PointOfInterests\Edit.cshtml" />
+    <Content Include="Views\PointOfInterests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

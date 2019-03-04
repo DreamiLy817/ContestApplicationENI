@@ -39,6 +39,7 @@ namespace ContestApp.Controllers
         // GET: PointOfInterests/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
