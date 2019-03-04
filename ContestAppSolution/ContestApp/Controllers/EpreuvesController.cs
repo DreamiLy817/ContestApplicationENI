@@ -10,6 +10,7 @@ using BO;
 using BO.Models;
 using ContestApp.Models.Mappers;
 using ContestApp.Models;
+using ContestApp.App_Start;
 
 namespace ContestApp.Controllers
 {
@@ -21,7 +22,10 @@ namespace ContestApp.Controllers
         public ActionResult Index()
         {
             List<Epreuve> epreuve = db.Epreuves.ToList();
-            return View(epreuve.Select(e => EpreuveMapper.Map(e)));
+
+            EpreuveViewModel epreuvevm = new EpreuveViewModel();
+            return View(epreuve.Select(e => MapperConfig.ReferenceEquals(epreuve, epreuvevm))
+            );
         }
 
         // GET: Epreuves/Details/5
@@ -83,7 +87,7 @@ namespace ContestApp.Controllers
         {
             Epreuve epreuve = db.Epreuves.Find(epreuveVM.Id);
 
-            epreuve = EpreuveMapper.Map(epreuveVM, epreuve, db);
+            MapperConfig.ReferenceEquals(epreuve, epreuveVM);
 
             if (ModelState.IsValid)
             {
@@ -93,7 +97,7 @@ namespace ContestApp.Controllers
             }
 
 
-            return View("CreateEdit", samourai);
+            return View("CreateEdit", epreuve);
         }
 
         // GET: Epreuves/Delete/5
