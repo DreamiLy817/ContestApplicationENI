@@ -12,6 +12,6 @@ namespace ContestApp.Models
         public decimal Distance { get; set; }
         public DateTime Date { get; set; }
         public Boolean Inscription { get; set; }
-        public string NomVille { get; set; }
+        public VilleViewModel Ville { get; set; }
     }
 }
