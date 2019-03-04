@@ -17,7 +17,7 @@ namespace ContestApp.Models.Mappers
                 Distance = epreuve.Distance,
                 Date = epreuve.Date,
                 Inscription = epreuve.Inscription,
-                NomVille = epreuve.Ville.Nom
+                //NomVille = epreuve.Ville.Nom
 
             };
         }
