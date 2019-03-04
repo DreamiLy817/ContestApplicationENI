@@ -8,26 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using BO.Models;
-using ContestApp.Models.Mappers;
 using ContestApp.Models;
-using ContestApp.App_Start;
 using AutoMapper;
+using ContestApp.App_Start;
 
 namespace ContestApp.Controllers
 {
-    public class EpreuvesController : Controller
+    public class CoursesController : Controller
     {
         private ContextContest db = new ContextContest();
 
-        // GET: Epreuves
+        // GET: Courses
         public ActionResult Index()
         {
-            var epreuve = db.Epreuves.ToList();
-          
-            return View(epreuve.Select( e => AutoMapper.Mapper.Map<EpreuveViewModel>(e)));
+            var epreuve = db.Course.ToList();
+            return View(epreuve.Select(e => Mapper.Map<CourseViewModel>(e)));
         }
 
-        // GET: Epreuves/Details/5
+        // GET: Courses/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -42,65 +40,55 @@ namespace ContestApp.Controllers
             return View(epreuve);
         }
 
-        // GET: Epreuves/Create
+        // GET: Courses/Create
         public ActionResult Create()
         {
-            Epreuve epreuve = new Epreuve();
-            return View("CreateEdit", Mapper.Map<EpreuveViewModel>(epreuve));
+            Epreuve epreuve = new Course();
+            return View("CreateEdit", Mapper.Map<CourseViewModel>(epreuve));
         }
 
-      
-        // GET: Epreuves/Edit/5
+
+        // GET: Courses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Epreuve epreuve = db.Epreuves.Find(id);
+            Epreuve epreuve = db.Course.Find(id);
             if (epreuve == null)
             {
                 return HttpNotFound();
             }
-            return View(epreuve);
-        }
-
-        // POST: Epreuves/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nom,Distance,Date,Inscription")] Epreuve epreuve)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(epreuve).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(epreuve);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateEdit([Bind(Include = "Id,Nom,Distance,Date,Inscription")] EpreuveViewModel epreuveVM)
-        {
-            Epreuve epreuve = db.Epreuves.Find(epreuveVM.Id);
-
-            MapperConfig.ReferenceEquals(epreuve, epreuveVM);
-
-            if (ModelState.IsValid)
-            {
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-
+            //passer un vm
             return View("CreateEdit", epreuve);
         }
+      
 
-        // GET: Epreuves/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEdit(CourseViewModel epreuveVM)
+        {
+            Course epreuve = db.Course.Find(epreuveVM.Id);
+            if(epreuve == null)
+            {
+                epreuve = new Course();
+                db.Course.Add(epreuve);
+            }
+
+            Mapper.Map(epreuveVM, epreuve);
+
+            if (ModelState.IsValid)
+            {
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+
+            return View("CreateEdit", epreuveVM);
+        }
+        // GET: Courses/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,7 +103,8 @@ namespace ContestApp.Controllers
             return View(epreuve);
         }
 
-        // POST: Epreuves/Delete/5
+
+        // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

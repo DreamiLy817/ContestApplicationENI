@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO.Models
 {
-     public class Epreuve
+     public abstract class Epreuve
     {
         public int Id { get; set; }
         public string Nom { get; set; }
