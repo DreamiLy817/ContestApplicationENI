@@ -80,11 +80,9 @@ namespace ContestApp.Controllers
 
             if (ModelState.IsValid)
             {
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
 
             return View("CreateEdit", epreuveVM);
         }
