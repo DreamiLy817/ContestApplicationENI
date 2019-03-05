@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ContestApp.Models.EpreuveViewModel>
+﻿@model IEnumerable<BO.Models.Ville>
 
 @{
     ViewBag.Title = "Index";
@@ -15,13 +15,7 @@
             @Html.DisplayNameFor(model => model.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Distance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Inscription)
+            @Html.DisplayNameFor(model => model.CodePostal)
         </th>
         <th></th>
     </tr>
@@ -32,13 +26,7 @@
             @Html.DisplayFor(modelItem => item.Nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Distance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Inscription)
+            @Html.DisplayFor(modelItem => item.CodePostal)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

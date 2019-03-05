@@ -8,120 +8,110 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using BO.Models;
-using ContestApp.Models.Mappers;
-using ContestApp.Models;
-using ContestApp.App_Start;
-using AutoMapper;
 
 namespace ContestApp.Controllers
 {
-    public class EpreuvesController : Controller
+    public class VillesController : Controller
     {
         private ContextContest db = new ContextContest();
 
-        // GET: Epreuves
+        // GET: Villes
         public ActionResult Index()
         {
-            var epreuve = db.Epreuves.ToList();
-          
-            return View(epreuve.Select( e => AutoMapper.Mapper.Map<EpreuveViewModel>(e)));
+            return View(db.Ville.ToList());
         }
 
-        // GET: Epreuves/Details/5
+        // GET: Villes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Epreuve epreuve = db.Epreuves.Find(id);
-            if (epreuve == null)
+            Ville ville = db.Ville.Find(id);
+            if (ville == null)
             {
                 return HttpNotFound();
             }
-            return View(epreuve);
+            return View(ville);
         }
 
-        // GET: Epreuves/Create
+        // GET: Villes/Create
         public ActionResult Create()
         {
-            Epreuve epreuve = new Epreuve();
-            return View("CreateEdit", Mapper.Map<EpreuveViewModel>(epreuve));
+            return View();
         }
 
-      
-        // GET: Epreuves/Edit/5
+        // POST: Villes/Create
+        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Nom,CodePostal")] Ville ville)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Ville.Add(ville);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(ville);
+        }
+
+        // GET: Villes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Epreuve epreuve = db.Epreuves.Find(id);
-            if (epreuve == null)
+            Ville ville = db.Ville.Find(id);
+            if (ville == null)
             {
                 return HttpNotFound();
             }
-            return View(epreuve);
+            return View(ville);
         }
 
-        // POST: Epreuves/Edit/5
+        // POST: Villes/Edit/5
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nom,Distance,Date,Inscription")] Epreuve epreuve)
+        public ActionResult Edit([Bind(Include = "Id,Nom,CodePostal")] Ville ville)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(epreuve).State = EntityState.Modified;
+                db.Entry(ville).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(epreuve);
+            return View(ville);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateEdit([Bind(Include = "Id,Nom,Distance,Date,Inscription")] EpreuveViewModel epreuveVM)
-        {
-            Epreuve epreuve = db.Epreuves.Find(epreuveVM.Id);
-
-            MapperConfig.ReferenceEquals(epreuve, epreuveVM);
-
-            if (ModelState.IsValid)
-            {
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-
-            return View("CreateEdit", epreuve);
-        }
-
-        // GET: Epreuves/Delete/5
+        // GET: Villes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Epreuve epreuve = db.Epreuves.Find(id);
-            if (epreuve == null)
+            Ville ville = db.Ville.Find(id);
+            if (ville == null)
             {
                 return HttpNotFound();
             }
-            return View(epreuve);
+            return View(ville);
         }
 
-        // POST: Epreuves/Delete/5
+        // POST: Villes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Epreuve epreuve = db.Epreuves.Find(id);
-            db.Epreuves.Remove(epreuve);
+            Ville ville = db.Ville.Find(id);
+            db.Ville.Remove(ville);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
