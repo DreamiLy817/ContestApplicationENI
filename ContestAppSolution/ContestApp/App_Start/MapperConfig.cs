@@ -18,7 +18,10 @@ namespace ContestApp.App_Start
                 config.CreateMap<VilleViewModel, Ville>();
 
                 config.CreateMap<Course, CourseViewModel>();
-                config.CreateMap<CourseViewModel, Course>();
+                config.CreateMap<CourseViewModel, Course>().AfterMap((vm, modele) =>
+                {
+                    // modele.Ville. = vm.ListeVilleForSelectListId
+                });
 
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
