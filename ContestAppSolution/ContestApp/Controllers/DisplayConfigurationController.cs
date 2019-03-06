@@ -1,20 +1,31 @@
-﻿using ContestApp.Models;
+﻿using BO.Models;
+using ContestApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ContestApp.Extensions;
+using BO.Repository;
+using System.Net;
 
 namespace ContestApp.Controllers
 {
     public class DisplayConfigurationController : Controller
     {
+        private IRepository<DisplayConfiguration> _repository;
 
+        public DisplayConfigurationController(IRepository<DisplayConfiguration> repository)
+        {
+            this._repository = repository;
+        }
 
         // GET: DisplayConfiguration
         public ActionResult Index()
         {
-            return View();
+            var displayConfig = this._repository.GetAll();
+
+            return View(displayConfig.Select(dc => dc.Map<DisplayConfigurationViewModel>()));
         }
 
         // GET: DisplayConfiguration/Details/5
@@ -31,40 +42,67 @@ namespace ContestApp.Controllers
 
         // POST: DisplayConfiguration/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(DisplayConfigurationViewModel displayConfigVm)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                try
+                {
+                    this._repository.Create(displayConfigVm.Map<DisplayConfiguration>());
+                    this._repository.Commit();
 
-                return RedirectToAction("Home");
+                    return RedirectToAction(nameof(this.Index));
+
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message );
+                   
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(displayConfigVm);
         }
 
         // GET: DisplayConfiguration/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            DisplayConfiguration displayConfig = this._repository.Get(id);
+            if (displayConfig == null)
+            {
+                return HttpNotFound();
+            }
+            return View(displayConfig.Map<DisplayConfigurationViewModel>());
         }
 
         // POST: DisplayConfiguration/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(DisplayConfigurationViewModel displayConfigVm)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(displayConfigVm);
+            }
             try
             {
-                // TODO: Add update logic here
+                DisplayConfiguration disConfig = this._repository.Get(displayConfigVm.Id);
+                displayConfigVm.Map(disConfig);
 
-                return RedirectToAction("Index");
+                this._repository.Commit();
+
+                return RedirectToAction(nameof(this.Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
+
+            return View(displayConfigVm);
+            
         }
 
         // GET: DisplayConfiguration/Delete/5
