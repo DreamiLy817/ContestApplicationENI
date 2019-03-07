@@ -10,14 +10,15 @@ namespace BO.Models
 {
     public class Resultat
     {
-        //[Key]
-        //[Column(Order = 1)]
-        //public Profil Profil { get; set; }
-        //[Key]
-        //[Column(Order = 2)]
-        //public Epreuve Epreuve { get; set; }
-        //public DateTime temps { get; set; }
-        //public int PositionFinale { get; set; }
-      
+        public int Id { get; set; }
+        [ForeignKey(nameof(Profil))]
+        public int ProfilId { get; set; }
+        [ForeignKey(nameof(Epreuve))]
+        public int EpreuveId { get; set; }
+        public DateTime Temps { get; set; }
+        public int Positionfinale { get; set; }
+        public Profil Profil { get; set; }
+        public Epreuve Epreuve { get; set; }
+
     }
 }
