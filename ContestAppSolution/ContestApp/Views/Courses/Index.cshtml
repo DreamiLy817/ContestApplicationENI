@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BO.Models.PointOfInterest>
+﻿@model IEnumerable<ContestApp.Models.CourseViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -18,10 +18,13 @@
             @Html.DisplayNameFor(model => model.Distance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Categorie.Nom)
+            @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Epreuve.Nom)
+            @Html.DisplayNameFor(model => model.Inscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ville)
         </th>
         <th></th>
     </tr>
@@ -35,10 +38,13 @@
             @Html.DisplayFor(modelItem => item.Distance)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Categorie.Nom)
+            @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Epreuve.Nom)
+            @Html.DisplayFor(modelItem => item.Inscription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ville.Nom)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

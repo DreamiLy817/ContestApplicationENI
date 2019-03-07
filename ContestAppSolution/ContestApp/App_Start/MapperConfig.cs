@@ -1,9 +1,12 @@
 ﻿using BO.Models;
+using BO.Repository;
 using ContestApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ContestApp.Extensions;
+using Unity;
 
 namespace ContestApp.App_Start
 {
@@ -17,10 +20,46 @@ namespace ContestApp.App_Start
                 config.CreateMap<Ville, VilleViewModel>();
                 config.CreateMap<VilleViewModel, Ville>();
 
-                config.CreateMap<Course, CourseViewModel>();
-                config.CreateMap<CourseViewModel, Course>().AfterMap((vm, modele) =>
+                config.CreateMap<Course, CourseViewModel>()
+                    .AfterMap((modele, vm) =>
+                    {
+                        Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
+                        Ville ville = villeRepository.GetAll(v => v.Id == modele.Ville?.Id).FirstOrDefault();
+
+                        if (ville != null)
+                        {
+                            vm.Ville = ville.Map<VilleViewModel>();
+                        }
+                    });
+
+                config.CreateMap<Course, CreateEditEpreuveViewModel>()
+                    .ForMember(vm => vm.VilleId, o => o.Ignore())
+                    .AfterMap((modele, vm) =>
+                    {
+                        Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
+
+                        vm.VilleId = villeRepository.GetAll(v => v.Id == modele.Ville?.Id).FirstOrDefault()?.Id;
+
+                        
+                    });
+
+                config.CreateMap<CreateEditEpreuveViewModel, Course>()
+                    .AfterMap((vm, modele) =>
                 {
-                    // modele.Ville. = vm.ListeVilleForSelectListId
+                    Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
+
+                    Ville villeActuelle = villeRepository.Get(vm.VilleId);
+                    if (
+                        villeActuelle != null)
+                    {
+                        throw new Exception("On ne peut pas sélectionner une ville inexistante");
+                    }
+
+                    if (villeActuelle != null)
+                    {
+                        villeActuelle = modele.Ville;
+                    }
+
                 });
 
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
