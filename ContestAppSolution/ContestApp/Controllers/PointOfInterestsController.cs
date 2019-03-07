@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using BO.Models;
+using ContestApp.Models;
+using AutoMapper;
 
 namespace ContestApp.Controllers
 {
@@ -39,8 +41,7 @@ namespace ContestApp.Controllers
         // GET: PointOfInterests/Create
         public ActionResult Create()
         {
-
-            return View();
+            return View(Mapper.Map<PointOfInterestViewModel>(new PointOfInterest()));
         }
 
         // POST: PointOfInterests/Create

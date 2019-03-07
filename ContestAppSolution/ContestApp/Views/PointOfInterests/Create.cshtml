@@ -1,4 +1,4 @@
-﻿@model BO.Models.PointOfInterest
+﻿@model ContestApp.Models.PointOfInterestViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Epreuve, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Epreuve, Model.Epreuve, "Veuillez sélectionner une Epreuve")
+                @Html.DropDownListFor(model => model.Epreuve, Model.listeEpreuve, "Veuillez sélectionner une Epreuve")
                 @Html.ValidationMessageFor(model => model.Epreuve, "", new { @class = "text-danger" })
             </div>
         </div>

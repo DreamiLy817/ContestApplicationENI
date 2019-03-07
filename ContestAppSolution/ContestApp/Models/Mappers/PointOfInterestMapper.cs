@@ -15,8 +15,8 @@ namespace ContestApp.Models.Mappers
                 Id = poi.Id,
                 Nom = poi.Nom,
                 Distance = poi.Distance,
-                NomCategorie = poi.Categorie.Nom,
-                NomEpreuve = poi.Epreuve.Nom
+              //  NomCategorie = poi.Categorie.Nom,
+                //NomEpreuve = poi.Epreuve.Nom
             };
         }
     }
