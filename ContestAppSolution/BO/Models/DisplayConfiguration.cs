@@ -23,7 +23,6 @@ namespace BO.Models
         public int Id { get; set; }
         public UniteTemps UniteTemps { get; set; }
         public UniteMesure UniteMesure { get; set; }
-        //public float Temps { get; set; }
 
         public DisplayConfiguration()
         {

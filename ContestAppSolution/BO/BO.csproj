@@ -108,13 +108,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="ContextContest.cs" />
-    <Compile Include="Migrations\201903010929199_Base.cs" />
-    <Compile Include="Migrations\201903010929199_Base.Designer.cs">
-      <DependentUpon>201903010929199_Base.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903011315308_Connexion.cs" />
-    <Compile Include="Migrations\201903011315308_Connexion.Designer.cs">
-      <DependentUpon>201903011315308_Connexion.cs</DependentUpon>
+    <Compile Include="Migrations\201903061317597_initDB.cs" />
+    <Compile Include="Migrations\201903061317597_initDB.Designer.cs">
+      <DependentUpon>201903061317597_initDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
@@ -136,14 +132,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903010929199_Base.resx">
-      <DependentUpon>201903010929199_Base.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903011315308_Connexion.resx">
-      <DependentUpon>201903011315308_Connexion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903061317597_initDB.resx">
+      <DependentUpon>201903061317597_initDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
