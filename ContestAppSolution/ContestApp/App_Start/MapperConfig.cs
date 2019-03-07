@@ -13,9 +13,18 @@ namespace ContestApp.App_Start
         {
             AutoMapper.Mapper.Initialize(config =>
             {
-               
-                config.CreateMap<Epreuve, EpreuveViewModel>();
-                config.CreateMap<EpreuveViewModel, Epreuve>();
+
+                config.CreateMap<Ville, VilleViewModel>();
+                config.CreateMap<VilleViewModel, Ville>();
+
+                config.CreateMap<Course, CourseViewModel>();
+                config.CreateMap<CourseViewModel, Course>().AfterMap((vm, modele) =>
+                {
+                    // modele.Ville. = vm.ListeVilleForSelectListId
+                });
+
+                config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
+                config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
 
                 config.CreateMap<PointOfInterest, PointOfInterestViewModel>();
                 config.CreateMap<PointOfInterestViewModel, PointOfInterest>();

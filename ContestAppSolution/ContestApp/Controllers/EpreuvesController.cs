@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using BO.Models;
-using ContestApp.Models.Mappers;
 using ContestApp.Models;
 using ContestApp.App_Start;
 
