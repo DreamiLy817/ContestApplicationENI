@@ -10,6 +10,7 @@ using BO;
 using BO.Models;
 using ContestApp.Models;
 using ContestApp.App_Start;
+using AutoMapper;
 
 namespace ContestApp.Controllers
 {
@@ -20,11 +21,9 @@ namespace ContestApp.Controllers
         // GET: Epreuves
         public ActionResult Index()
         {
-            List<Epreuve> epreuve = db.Epreuves.ToList();
+            var epreuve = db.Epreuves.ToList();
 
-            EpreuveViewModel epreuvevm = new EpreuveViewModel();
-            return View(epreuve.Select(e => MapperConfig.ReferenceEquals(epreuve, epreuvevm))
-            );
+            return View(epreuve.Select(e => AutoMapper.Mapper.Map<EpreuveViewModel>(e)));
         }
 
         // GET: Epreuves/Details/5
@@ -45,10 +44,12 @@ namespace ContestApp.Controllers
         // GET: Epreuves/Create
         public ActionResult Create()
         {
+            // Epreuve epreuve = new Epreuve();
+            //"CreateEdit", Mapper.Map<EpreuveViewModel>(epreuve)
             return View();
         }
 
-      
+
         // GET: Epreuves/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -135,3 +136,4 @@ namespace ContestApp.Controllers
         }
     }
 }
+
