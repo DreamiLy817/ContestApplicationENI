@@ -1,4 +1,4 @@
-﻿@model BO.Models.Epreuve
+﻿@model ContestApp.Models.VilleViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Epreuve</h4>
+    <h4>Ville</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,27 +20,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Distance)
+            @Html.DisplayNameFor(model => model.CodePostal)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Distance)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Inscription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Inscription)
+            @Html.DisplayFor(model => model.CodePostal)
         </dd>
 
     </dl>

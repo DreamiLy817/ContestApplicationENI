@@ -22,9 +22,6 @@
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<PointOfInterest> PointOfInterest { get; set; }
         public virtual DbSet<Ville> Ville { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<DisplayConfiguration> DisplayConfiguration { get; set; }
     
 
         public System.Data.Entity.DbSet<BO.Models.Epreuve> Epreuves { get; set; }
