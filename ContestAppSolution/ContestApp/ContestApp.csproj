@@ -243,6 +243,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PointOfInterestViewModel.cs" />
+    <Compile Include="Models\ProfilViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\VilleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

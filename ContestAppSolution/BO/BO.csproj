@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201903070833450_deleteUserAndRoleModels.Designer.cs">
       <DependentUpon>201903070833450_deleteUserAndRoleModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903071341096_addProfilAndResultat.cs" />
+    <Compile Include="Migrations\201903071341096_addProfilAndResultat.Designer.cs">
+      <DependentUpon>201903071341096_addProfilAndResultat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Course.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903070833450_deleteUserAndRoleModels.resx">
       <DependentUpon>201903070833450_deleteUserAndRoleModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903071341096_addProfilAndResultat.resx">
+      <DependentUpon>201903071341096_addProfilAndResultat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
