@@ -11,3 +11,15 @@ body nav.navbar a {
 body {
     padding-top: 0 !important;
 }
+
+.btn-default {
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+}
+
+.btn-default:hover {
+    background-color: white;
+    color: #3498db;
+    transition: all 0.3s;
+}
