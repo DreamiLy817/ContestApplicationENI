@@ -7,13 +7,13 @@ namespace BO.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Connexion : IMigrationMetadata
+    public sealed partial class AddDisplayConfigTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Connexion));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddDisplayConfigTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903011315308_Connexion"; }
+            get { return "201903041311273_AddDisplayConfigTable"; }
         }
         
         string IMigrationMetadata.Source

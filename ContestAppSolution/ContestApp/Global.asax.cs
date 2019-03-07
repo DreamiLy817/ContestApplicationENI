@@ -20,6 +20,7 @@ namespace ContestApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MapperConfig.Init();
+            UnityConfig.RegisterTypes(UnityConfig.Container);
         }
     }
 }

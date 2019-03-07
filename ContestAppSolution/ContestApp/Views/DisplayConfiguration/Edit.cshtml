@@ -1,0 +1,66 @@
+﻿@using ContestApp.Models;
+@model ContestApp.Models.DisplayConfigurationViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Configuration de l'affichage</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <h4>Choisir l'unité de mesure :</h4>
+        <div class="form-group">
+            
+            <div class="col-md-6">
+                @Html.RadioButtonFor(model => model.UniteMesure, UniteMesure.Miles, new { id = UniteMesure.Miles})
+                @Html.Label("Miles", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-6">
+                @Html.RadioButtonFor(model => model.UniteMesure, UniteMesure.Kilometres, new { id = UniteMesure.Kilometres })
+                @Html.Label("Kilomètres", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            @Html.ValidationMessageFor(model => model.UniteMesure, "", new { @class = "text-danger" })
+        </div>
+
+        <h4>Choisir l'unité de temps :</h4>
+        <div class="form-group">
+           
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.UniteTemps, UniteTemps.Seconde, new { id = UniteTemps.Seconde })
+                @Html.Label("Seconde", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.UniteTemps, UniteTemps.Minute, new { id = UniteTemps.Minute })
+                @Html.Label("Minute", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.UniteTemps, UniteTemps.Heure, new { id = UniteTemps.Heure })
+                @Html.Label("Heure", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+            @Html.ValidationMessageFor(model => model.UniteTemps, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

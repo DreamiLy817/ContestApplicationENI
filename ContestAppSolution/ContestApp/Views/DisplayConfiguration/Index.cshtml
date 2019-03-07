@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ContestApp.Models.DisplayConfigurationViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Configuration de l'affichage</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UniteMesure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UniteTemps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temps)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UniteMesure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UniteTemps)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temps)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
