@@ -16,5 +16,4 @@ namespace BO.Models
         public virtual DateTime dateInscription { get; set; }
 
     }
-
 }
