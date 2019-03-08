@@ -16,7 +16,6 @@ namespace ContestApp.Models
         public int? VilleId { get; set; }
         [Required]
         public List<SelectListItem> ListeVilleForSelectList { get; set; }
-
         public CreateEditEpreuveViewModel()
         {
             this.InitList();

@@ -23,7 +23,6 @@ namespace BO
         public virtual DbSet<PointOfInterest> PointOfInterest { get; set; }
         public virtual DbSet<Ville> Ville { get; set; }
         public virtual DbSet<Resultat> Resultat { get; set; }
-        public virtual DbSet<Profil> Profil { get; set; }
         public virtual DbSet<Inscription> Inscription { get; set; }
 
 

@@ -27,7 +27,7 @@ namespace ContestApp.Models
             IRepository<Epreuve> epreuveRepository =
                UnityConfig.Container.Resolve<IRepository<Epreuve>>();
 
-            this.ListeEpreuveForSelectList = epreuveRepository.GetAll().Select(a => new SelectListItem
+            this.ListeEpreuveForSelectList = epreuveRepository.GetAll().Where(c => c.Inscription).Select(a => new SelectListItem
             {
                 Value = a.Id.ToString(),
                 Text = a.Nom

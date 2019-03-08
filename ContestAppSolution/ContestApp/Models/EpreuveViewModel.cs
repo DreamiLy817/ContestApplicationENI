@@ -1,4 +1,5 @@
 ﻿using BO;
+using BO.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,21 +20,11 @@ namespace ContestApp.Models
         public Boolean Inscription { get; set; }
         public VilleViewModel Ville { get; set; }
         public DateTime Date { get; set; }
-        //public List<string> ListeVilleForSelectListId { get; set;}
-        //[Required]
-        //public List<SelectListItem> ListeVilleForSelectList { get; set; }
+        public List<PointOfInterest> listePointOfInterests { get; set; } = new List<PointOfInterest>();
 
-        public EpreuveViewModel()
+        public void chargerPoi()
         {
-        
-            //this.ListeVilleForSelectList = db.Ville.Select(a => new SelectListItem
-            //{
-            //    Value = a.Id.ToString(),
-            //    Text = a.Nom
-            //}).ToList();
-
-
-
+            this.listePointOfInterests = db.PointOfInterest.Where(p => p.Epreuve.Id == this.Id).ToList();
         }
     }
 }

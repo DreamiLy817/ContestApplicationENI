@@ -25,7 +25,20 @@
         <dd>
             @Html.DisplayFor(model => model.Distance)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Categorie.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Epreuve)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epreuve.Nom)
+        </dd>
     </dl>
 </div>
 <p>
