@@ -52,7 +52,7 @@ namespace ContestApp.Controllers
             //{
             //    return HttpNotFound();
             //}
-            return View(course.Map<CourseViewModel>());
+            return View(course.Map<CreateEditEpreuveViewModel>());
         }
 
         // GET: Courses/Create
@@ -124,7 +124,7 @@ namespace ContestApp.Controllers
                 return HttpNotFound();
             }
 
-            return View(course.Map<CourseViewModel>());
+            return View(course.Map<CreateEditEpreuveViewModel>());
         }
 
 

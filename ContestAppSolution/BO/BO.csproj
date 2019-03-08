@@ -125,6 +125,7 @@
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DisplayConfiguration.cs" />
     <Compile Include="Models\Epreuve.cs" />
+    <Compile Include="Models\Inscription.cs" />
     <Compile Include="Models\PointOfInterest.cs" />
     <Compile Include="Models\Resultat.cs" />
     <Compile Include="Models\Profil.cs" />
