@@ -12,9 +12,10 @@ namespace ContestApp.Models
     {
         private ContextContest db = new ContextContest();
         public int Id { get; set; }
+
+        [Required]
         public string Nom { get; set; }
         public decimal Distance { get; set; }
-        public DateTime Date { get; set; }
         public Boolean Inscription { get; set; }
         public VilleViewModel Ville { get; set; }
         //public List<string> ListeVilleForSelectListId { get; set;}

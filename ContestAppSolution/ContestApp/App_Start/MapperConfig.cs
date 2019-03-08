@@ -49,12 +49,8 @@ namespace ContestApp.App_Start
                     Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
 
                     Ville villeActuelle = villeRepository.Get(vm.VilleId);
-                    if (
-                        villeActuelle != null)
-                    {
-                        throw new Exception("On ne peut pas sélectionner une ville inexistante");
-                    }
-
+                    
+                
                     if (villeActuelle != null)
                     {
                         villeActuelle = modele.Ville;

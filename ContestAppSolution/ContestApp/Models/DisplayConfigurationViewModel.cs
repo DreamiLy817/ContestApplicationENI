@@ -37,6 +37,7 @@ namespace ContestApp.Models
         public UniteMesure UniteMesure { get; set; }
         public float Temps { get; set; }
 
+
         public DisplayConfigurationViewModel()
         {
             this.UniteTemps = ContestApp.Models.UniteTemps.Heure;
@@ -50,9 +51,6 @@ namespace ContestApp.Models
            float resultDistance = convertMesure(distance, uMesure);
            float resultTemps = convertTemps(temps, uTemps);
 
-
-
-
         }
 
         /*
@@ -63,7 +61,6 @@ namespace ContestApp.Models
         private float convertMesure(float distance, int uniteMesure)
         {
             
-
             if (distance != 0 && uniteMesure == 1)
             {
                 distance *= 1.609344f;
@@ -83,7 +80,6 @@ namespace ContestApp.Models
         private float convertTemps(float temps, int uniteTemps)
         {
             
-
             if (temps != 0 && uniteTemps == 1)
             {
                 temps *= 1.609344f;

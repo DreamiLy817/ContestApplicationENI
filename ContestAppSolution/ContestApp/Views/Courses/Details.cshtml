@@ -1,4 +1,4 @@
-﻿@model BO.Models.Course
+﻿@model  ContestApp.Models.CreateEditEpreuveViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -40,6 +40,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.Inscription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville.Nom)
         </dd>
 
         <dt>
