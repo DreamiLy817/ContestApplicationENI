@@ -61,6 +61,10 @@ namespace ContestApp.App_Start
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
 
+
+                config.CreateMap<Inscription, InscriptionViewModel>();
+                config.CreateMap<InscriptionViewModel, Inscription>();
+
                 config.CreateMap<Resultat, ResultatViewModel>()
                     .ForMember(vm => vm.EpreuveId, o => o.Ignore())
                     .AfterMap((modele, vm) =>
@@ -88,6 +92,7 @@ namespace ContestApp.App_Start
 
                 config.CreateMap<Epreuve, EpreuveViewModel>();
                 config.CreateMap<EpreuveViewModel, Epreuve>();
+
 
             });
         }
