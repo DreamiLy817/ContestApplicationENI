@@ -220,6 +220,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PointOfInterestsController.cs" />
+    <Compile Include="Controllers\ProfilsController.cs" />
+    <Compile Include="Controllers\ResultatsController.cs" />
     <Compile Include="Controllers\VillesController.cs" />
     <Compile Include="Extensions\MapperExtension.cs" />
     <Compile Include="Global.asax.cs">
@@ -244,6 +246,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PointOfInterestViewModel.cs" />
     <Compile Include="Models\ProfilViewModel.cs" />
+    <Compile Include="Models\ResultatViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\VilleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -376,6 +379,16 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Profils\Create.cshtml" />
+    <Content Include="Views\Profils\Delete.cshtml" />
+    <Content Include="Views\Profils\Details.cshtml" />
+    <Content Include="Views\Profils\Edit.cshtml" />
+    <Content Include="Views\Profils\Index.cshtml" />
+    <Content Include="Views\Resultats\Create.cshtml" />
+    <Content Include="Views\Resultats\Delete.cshtml" />
+    <Content Include="Views\Resultats\Details.cshtml" />
+    <Content Include="Views\Resultats\Edit.cshtml" />
+    <Content Include="Views\Resultats\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

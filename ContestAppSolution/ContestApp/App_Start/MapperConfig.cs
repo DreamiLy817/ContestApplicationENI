@@ -50,7 +50,7 @@ namespace ContestApp.App_Start
 
                     Ville villeActuelle = villeRepository.Get(vm.VilleId);
                     if (
-                        villeActuelle != null)
+                        villeActuelle == null)
                     {
                         throw new Exception("On ne peut pas sélectionner une ville inexistante");
                     }
@@ -60,10 +60,61 @@ namespace ContestApp.App_Start
                         villeActuelle = modele.Ville;
                     }
 
+
                 });
 
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
+
+                config.CreateMap<Resultat, ResultatViewModel>()
+                    .ForMember(vm => vm.EpreuveId, o => o.Ignore())
+                    .ForMember(vm => vm.ProfilId, o => o.Ignore())
+                    .AfterMap((modele, vm) =>
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        vm.EpreuveId = epreuveRepository.GetAll(e => e.Id == modele.Epreuve?.Id).FirstOrDefault()?.Id;
+
+                        Repository<Profil> profilRepository = UnityConfig.Container.Resolve<Repository<Profil>>();
+
+                        vm.ProfilId = profilRepository.GetAll(p => p.Id == modele.Profil?.Id).FirstOrDefault()?.Id;
+                    });
+
+                config.CreateMap<ResultatViewModel, Resultat>()
+                    .AfterMap((vm, modele) => 
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        Epreuve epreuveActuelle = epreuveRepository.Get(vm.EpreuveId);
+
+                        if (epreuveActuelle == null)
+                        {
+                            throw new Exception("On ne peut pas sélectionner une épreuve inexistante");
+                        }
+                        if (epreuveActuelle != null)
+                        {
+                            epreuveActuelle = modele.Epreuve;
+                        }
+
+                        Repository<Profil> profilRepository = UnityConfig.Container.Resolve<Repository<Profil>>();
+
+                        Profil profilActuelle = profilRepository.Get(vm.ProfilId);
+
+                        if (profilActuelle == null)
+                        {
+                            throw new Exception("On ne peut pas sélectionner un utilisateur inexistante");
+                        }
+                        if (profilActuelle != null)
+                        {
+                            profilActuelle = modele.Profil;
+                        }
+
+                    });
+
+                config.CreateMap<Profil, ProfilViewModel>();
+                config.CreateMap<ProfilViewModel, Profil>();
+                config.CreateMap<Epreuve, EpreuveViewModel>();
+                config.CreateMap<EpreuveViewModel, Epreuve>();
 
             });
         }
