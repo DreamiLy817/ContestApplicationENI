@@ -49,67 +49,7 @@ namespace ContestApp.Controllers
             return View(resultat);
         }
 
-        // GET: Resultats/Create
-        public ActionResult Create()
-        {
-            ViewBag.EpreuveId = new SelectList(db.Epreuves, "Id", "Nom");
-            ViewBag.ProfilId = new SelectList(db.Profil, "Id", "Nom");
-            return View();
-        }
-
-        // POST: Resultats/Create
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProfilId,EpreuveId,Temps,Positionfinale")] Resultat resultat)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Resultat.Add(resultat);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.EpreuveId = new SelectList(db.Epreuves, "Id", "Nom", resultat.EpreuveId);
-            ViewBag.ProfilId = new SelectList(db.Profil, "Id", "Nom", resultat.ProfilId);
-            return View(resultat);
-        }
-
-        // GET: Resultats/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Resultat resultat = db.Resultat.Find(id);
-            if (resultat == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.EpreuveId = new SelectList(db.Epreuves, "Id", "Nom", resultat.EpreuveId);
-            ViewBag.ProfilId = new SelectList(db.Profil, "Id", "Nom", resultat.ProfilId);
-            return View(resultat);
-        }
-
-        // POST: Resultats/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProfilId,EpreuveId,Temps,Positionfinale")] Resultat resultat)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(resultat).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.EpreuveId = new SelectList(db.Epreuves, "Id", "Nom", resultat.EpreuveId);
-            ViewBag.ProfilId = new SelectList(db.Profil, "Id", "Nom", resultat.ProfilId);
-            return View(resultat);
-        }
+       
 
         // GET: Resultats/Delete/5
         public ActionResult Delete(int? id)

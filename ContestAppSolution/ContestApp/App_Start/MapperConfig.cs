@@ -56,7 +56,6 @@ namespace ContestApp.App_Start
                         villeActuelle = modele.Ville;
                     }
 
-
                 });
 
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
@@ -64,16 +63,13 @@ namespace ContestApp.App_Start
 
                 config.CreateMap<Resultat, ResultatViewModel>()
                     .ForMember(vm => vm.EpreuveId, o => o.Ignore())
-                    .ForMember(vm => vm.ProfilId, o => o.Ignore())
                     .AfterMap((modele, vm) =>
                     {
                         Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
 
                         vm.EpreuveId = epreuveRepository.GetAll(e => e.Id == modele.Epreuve?.Id).FirstOrDefault()?.Id;
 
-                        Repository<Profil> profilRepository = UnityConfig.Container.Resolve<Repository<Profil>>();
-
-                        vm.ProfilId = profilRepository.GetAll(p => p.Id == modele.Profil?.Id).FirstOrDefault()?.Id;
+                       
                     });
 
                 config.CreateMap<ResultatViewModel, Resultat>()
@@ -88,20 +84,8 @@ namespace ContestApp.App_Start
                             epreuveActuelle = modele.Epreuve;
                         }
 
-                        Repository<Profil> profilRepository = UnityConfig.Container.Resolve<Repository<Profil>>();
-
-                        Profil profilActuelle = profilRepository.Get(vm.ProfilId);
-
-                       
-                        if (profilActuelle != null)
-                        {
-                            profilActuelle = modele.Profil;
-                        }
-
                     });
 
-                config.CreateMap<Profil, ProfilViewModel>();
-                config.CreateMap<ProfilViewModel, Profil>();
                 config.CreateMap<Epreuve, EpreuveViewModel>();
                 config.CreateMap<EpreuveViewModel, Epreuve>();
 

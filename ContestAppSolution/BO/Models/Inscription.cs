@@ -10,6 +10,6 @@ namespace BO.Models
     {
         public int Id;
         public DateTime dateInscription;
-        public Profil profil;
+        
     }
 }

@@ -20,11 +20,6 @@ namespace BO.Repository
             return resultats;
         }
 
-        public List<Resultat> GetResultatsDUnUser(Profil user)
-        {
-            List<Resultat> resultats = this.GetAll().Where(r => r.ProfilId == user.Id).ToList();
-
-            return resultats;
-        }
+        
     }
 }
