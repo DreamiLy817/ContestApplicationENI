@@ -108,17 +108,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="ContextContest.cs" />
-    <Compile Include="Migrations\201903061317597_initDB.cs" />
-    <Compile Include="Migrations\201903061317597_initDB.Designer.cs">
-      <DependentUpon>201903061317597_initDB.cs</DependentUpon>
+    <Compile Include="Migrations\201903081021220_modificationinscription.cs" />
+    <Compile Include="Migrations\201903081021220_modificationinscription.Designer.cs">
+      <DependentUpon>201903081021220_modificationinscription.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903070833450_deleteUserAndRoleModels.cs" />
-    <Compile Include="Migrations\201903070833450_deleteUserAndRoleModels.Designer.cs">
-      <DependentUpon>201903070833450_deleteUserAndRoleModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903071341096_addProfilAndResultat.cs" />
-    <Compile Include="Migrations\201903071341096_addProfilAndResultat.Designer.cs">
-      <DependentUpon>201903071341096_addProfilAndResultat.cs</DependentUpon>
+    <Compile Include="Migrations\201903081057359_inscriptionid.cs" />
+    <Compile Include="Migrations\201903081057359_inscriptionid.Designer.cs">
+      <DependentUpon>201903081057359_inscriptionid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201903080924227_deleteProfil.cs" />
     <Compile Include="Migrations\201903080924227_deleteProfil.Designer.cs">
@@ -149,14 +145,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903061317597_initDB.resx">
-      <DependentUpon>201903061317597_initDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903081021220_modificationinscription.resx">
+      <DependentUpon>201903081021220_modificationinscription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903070833450_deleteUserAndRoleModels.resx">
-      <DependentUpon>201903070833450_deleteUserAndRoleModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903071341096_addProfilAndResultat.resx">
-      <DependentUpon>201903071341096_addProfilAndResultat.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903081057359_inscriptionid.resx">
+      <DependentUpon>201903081057359_inscriptionid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903080924227_deleteProfil.resx">
       <DependentUpon>201903080924227_deleteProfil.cs</DependentUpon>

@@ -218,6 +218,7 @@
     <Compile Include="Controllers\DisplayConfigurationController.cs" />
     <Compile Include="Controllers\EpreuvesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InscriptionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PointOfInterestsController.cs" />
     <Compile Include="Controllers\ResultatsController.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="Models\DisplayConfigurationViewModel.cs" />
     <Compile Include="Models\EpreuveViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InscriptionViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PointOfInterestViewModel.cs" />
     <Compile Include="Models\ResultatViewModel.cs" />
@@ -376,11 +378,18 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+
+    <Content Include="Views\Inscriptions\Delete.cshtml" />
+    <Content Include="Views\Inscriptions\Details.cshtml" />
+    <Content Include="Views\Inscriptions\Index.cshtml" />
+    <Content Include="Views\Inscriptions\CreateEdit.cshtml" />
+
     <Content Include="Views\Resultats\Create.cshtml" />
     <Content Include="Views\Resultats\Delete.cshtml" />
     <Content Include="Views\Resultats\Details.cshtml" />
     <Content Include="Views\Resultats\Edit.cshtml" />
     <Content Include="Views\Resultats\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

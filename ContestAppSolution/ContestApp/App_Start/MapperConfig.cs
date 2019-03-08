@@ -61,7 +61,37 @@ namespace ContestApp.App_Start
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
 
-                config.CreateMap<Resultat, ResultatViewModel>();
+
+                config.CreateMap<Inscription, InscriptionViewModel>();
+                config.CreateMap<InscriptionViewModel, Inscription>();
+
+                config.CreateMap<Resultat, ResultatViewModel>()
+                    .ForMember(vm => vm.EpreuveId, o => o.Ignore())
+                    .AfterMap((modele, vm) =>
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        vm.EpreuveId = epreuveRepository.GetAll(e => e.Id == modele.Epreuve?.Id).FirstOrDefault()?.Id;
+
+                       
+                    });
+
+                config.CreateMap<ResultatViewModel, Resultat>()
+                    .AfterMap((vm, modele) => 
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        Epreuve epreuveActuelle = epreuveRepository.Get(vm.EpreuveId);
+
+                        if (epreuveActuelle != null)
+                        {
+                            epreuveActuelle = modele.Epreuve;
+                        }
+
+                    });
+
+                config.CreateMap<Epreuve, EpreuveViewModel>();
+                config.CreateMap<EpreuveViewModel, Epreuve>();
 
 
             });
