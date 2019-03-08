@@ -124,6 +124,10 @@
     <Compile Include="Migrations\201903080924227_deleteProfil.Designer.cs">
       <DependentUpon>201903080924227_deleteProfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903081401503_ModifResultatTemps.cs" />
+    <Compile Include="Migrations\201903081401503_ModifResultatTemps.Designer.cs">
+      <DependentUpon>201903081401503_ModifResultatTemps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Course.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903080924227_deleteProfil.resx">
       <DependentUpon>201903080924227_deleteProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903081401503_ModifResultatTemps.resx">
+      <DependentUpon>201903081401503_ModifResultatTemps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

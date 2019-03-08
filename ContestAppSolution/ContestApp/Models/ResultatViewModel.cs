@@ -9,13 +9,14 @@ namespace ContestApp.Models
     public class ResultatViewModel
     {
         public int Id { get; set; }
-        public DateTime Temps { get; set; }
+        public TimeSpan Temps { get; set; }
         [DisplayName("Position Finale")]
         public int Positionfinale { get; set; }
-    
+       
         [DisplayName("Epreuve")]
-        public EpreuveViewModel Epreuve { get; set; }
-        public int? EpreuveId { get; internal set; }
+        public CourseViewModel Epreuve { get; set; }
+
+       
      
     }
 }
