@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201903060915095_updateBD.Designer.cs">
       <DependentUpon>201903060915095_updateBD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903070920219_New.cs" />
+    <Compile Include="Migrations\201903070920219_New.Designer.cs">
+      <DependentUpon>201903070920219_New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategorieViewModel.cs" />
@@ -365,7 +369,7 @@
     <Content Include="Views\Villes\Details.cshtml" />
     <Content Include="Views\Villes\Edit.cshtml" />
     <Content Include="Views\Villes\Index.cshtml" />
-    <Content Include="Views\PointOfInterests\Create.cshtml" />
+    <Content Include="Views\PointOfInterests\CreateEdit.cshtml" />
     <Content Include="Views\PointOfInterests\Delete.cshtml" />
     <Content Include="Views\PointOfInterests\Details.cshtml" />
     <Content Include="Views\PointOfInterests\Edit.cshtml" />
@@ -403,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903060915095_updateBD.resx">
       <DependentUpon>201903060915095_updateBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903070920219_New.resx">
+      <DependentUpon>201903070920219_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

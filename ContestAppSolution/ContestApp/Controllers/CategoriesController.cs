@@ -11,6 +11,7 @@ using BO.Models;
 
 namespace ContestApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CategoriesController : Controller
     {
         private ContextContest db = new ContextContest();

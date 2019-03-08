@@ -13,6 +13,7 @@ using ContestApp.Extensions;
 
 namespace ContestApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CoursesController : Controller
     {
         private IRepository<Course> _repository;
@@ -30,7 +31,7 @@ namespace ContestApp.Controllers
             var courses = this._repository.GetAll();
             return View(courses.Select(c => c.Map<CourseViewModel>()));
         }
-
+        
         // GET: Courses/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,7 +53,7 @@ namespace ContestApp.Controllers
             //{
             //    return HttpNotFound();
             //}
-            return View(course.Map<CourseViewModel>());
+            return View(course);
         }
 
         // GET: Courses/Create

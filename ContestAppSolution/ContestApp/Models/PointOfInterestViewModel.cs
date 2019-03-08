@@ -14,8 +14,12 @@ namespace ContestApp.Models
         public string Nom { get; set; }
         public decimal Distance { get; set; }
         public Categorie Categorie { get; set; }
+
+        public int CategorieId { get; set; }
         public Epreuve Epreuve { get; set; }
+        public int EpreuveId { get; set; }
         public List<SelectListItem> listeEpreuve { get; set; }
+        public List<SelectListItem> listeCategorie { get; set; }
 
         public PointOfInterestViewModel()
         {
@@ -25,6 +29,12 @@ namespace ContestApp.Models
             {
                 Text = e.Nom,
                 Value = e.Id.ToString()
+            }).ToList();
+
+            listeCategorie = db.Categories.Select(c => new SelectListItem
+            {
+                Text = c.Nom,
+                Value = c.Id.ToString()
             }).ToList();
 
 
