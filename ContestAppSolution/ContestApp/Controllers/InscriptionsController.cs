@@ -27,7 +27,11 @@ namespace ContestApp.Controllers
         {
          
             var inscription = this._repository.GetAll();
-            return View(inscription.Select(c => c.Map<InscriptionViewModel>()));
+            if(!User.IsInRole("Administrator"))
+            {
+                inscription = inscription.Where(i => i.UtilisateurName == User.Identity.Name).ToList();
+            }
+            return View(inscription);
         }
 
 
@@ -90,11 +94,11 @@ namespace ContestApp.Controllers
                 {
                     inscription = new Inscription();
                     this._repository.Create(inscription);
-                    inscription.dateInscription = DateTime.Now;
-                    inscription.UtilisateurName = User.Identity.Name;
                 }
 
                 inscriptionVm.Map(inscription);
+                inscription.dateInscription = DateTime.Now;
+                inscription.UtilisateurName = User.Identity.Name;
 
                 this._repository.Commit();
                 return RedirectToAction(nameof(this.Index));
@@ -116,7 +120,7 @@ namespace ContestApp.Controllers
                 return HttpNotFound();
             }
 
-            return View(inscription.Map<InscriptionViewModel>());
+            return View(inscription);
         }
 
 

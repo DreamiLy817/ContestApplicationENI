@@ -8,17 +8,29 @@ using System.Web;
 using System.Web.Mvc;
 using BO;
 using BO.Models;
+using ContestApp.Models;
+using AutoMapper;
+using BO.Repository;
+using ContestApp.Extensions;
 
 namespace ContestApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class PointOfInterestsController : Controller
     {
+        private IRepository<PointOfInterest> _repository;
+
         private ContextContest db = new ContextContest();
+
+        public PointOfInterestsController(IRepository<PointOfInterest> repository)
+        {
+            this._repository = repository;
+        }
 
         // GET: PointOfInterests
         public ActionResult Index()
         {
-            return View(db.PointOfInterest.ToList());
+            return View(db.PointOfInterest.Include(p => p.Categorie).Include(po => po.Epreuve).ToList());
         }
 
         // GET: PointOfInterests/Details/5
@@ -28,7 +40,7 @@ namespace ContestApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PointOfInterest pointOfInterest = db.PointOfInterest.Find(id);
+            PointOfInterest pointOfInterest = db.PointOfInterest.Include(p => p.Categorie).Include(po => po.Epreuve).Where(poi => poi.Id == id).FirstOrDefault();
             if (pointOfInterest == null)
             {
                 return HttpNotFound();
@@ -39,24 +51,31 @@ namespace ContestApp.Controllers
         // GET: PointOfInterests/Create
         public ActionResult Create()
         {
-            return View();
+            return View("CreateEdit",Mapper.Map<PointOfInterestViewModel>(new PointOfInterest()));
         }
 
-        // POST: PointOfInterests/Create
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nom,Distance")] PointOfInterest pointOfInterest)
+        public ActionResult CreateEdit(PointOfInterestViewModel pointOfInterest)
         {
-            if (ModelState.IsValid)
-            {
-                db.PointOfInterest.Add(pointOfInterest);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(pointOfInterest);
+            PointOfInterest poi = this._repository.Get(pointOfInterest.Id);
+
+            if (ModelState.IsValid || true)
+            {
+
+                if (poi == null)
+                {
+                    poi = new PointOfInterest();
+                    this._repository.Create(poi);
+                }
+
+                pointOfInterest.Map(poi);
+
+                this._repository.Commit();
+                return RedirectToAction(nameof(this.Index));
+            }
+            return View("CreateEdit", pointOfInterest);
         }
 
         // GET: PointOfInterests/Edit/5
@@ -71,7 +90,7 @@ namespace ContestApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pointOfInterest);
+            return View("CreateEdit", Mapper.Map<PointOfInterestViewModel>(pointOfInterest));
         }
 
         // POST: PointOfInterests/Edit/5

@@ -63,7 +63,18 @@ namespace ContestApp.App_Start
 
 
                 config.CreateMap<Inscription, InscriptionViewModel>();
-                config.CreateMap<InscriptionViewModel, Inscription>();
+                config.CreateMap<InscriptionViewModel, Inscription>()
+                     .AfterMap((modele, vm) =>
+                     {
+                         Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+                         Epreuve epreuve = epreuveRepository.GetAll(e => e.Id.ToString() == modele.epreuveId).FirstOrDefault();
+
+                         if (epreuve != null)
+                         {
+                             vm.Epreuve = epreuve;
+                         }
+
+                     });
 
                 config.CreateMap<Resultat, ResultatViewModel>()
                     .ForMember(vm => vm.EpreuveId, o => o.Ignore())
@@ -93,6 +104,26 @@ namespace ContestApp.App_Start
                 config.CreateMap<Epreuve, EpreuveViewModel>();
                 config.CreateMap<EpreuveViewModel, Epreuve>();
 
+                config.CreateMap<PointOfInterest, PointOfInterestViewModel>();
+                config.CreateMap<PointOfInterestViewModel, PointOfInterest>()
+                    .AfterMap((modele, vm) =>
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+                        Epreuve epreuve = epreuveRepository.GetAll(e => e.Id == modele.EpreuveId).FirstOrDefault();
+
+                        if (epreuve != null)
+                        {
+                            vm.Epreuve = epreuve;
+                        }
+
+                        Repository<Categorie> categorieRepository = UnityConfig.Container.Resolve<Repository<Categorie>>();
+                        Categorie categorie = categorieRepository.GetAll(c => c.Id == modele.CategorieId).FirstOrDefault();
+
+                        if (categorie != null)
+                        {
+                            vm.Categorie = categorie;
+                        }
+                    });
 
             });
         }

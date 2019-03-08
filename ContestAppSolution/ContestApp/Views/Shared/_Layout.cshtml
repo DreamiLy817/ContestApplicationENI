@@ -22,30 +22,27 @@
                     <li class="nav-item active">
                         @Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
                     </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    if (User.IsInRole("Administrator"))
+                    {
                     <li class="nav-item">
-                        @*<a class="" href="#">Link</a>*@
                         @Html.ActionLink("Courses", "Index", "Courses", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @*<a class="" href="#">Link</a>*@
-                        @Html.ActionLink("Résultats", "Index", "Resultats", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @*<a class="" href="#">Link</a>*@
                         @Html.ActionLink("Villes", "Index", "Villes", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @*<a class="" href="#">Link</a>*@
                         @Html.ActionLink("Point d'intérêts", "Index", "PointOfInterests", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @*<a class="" href="#">Link</a>*@
                         @Html.ActionLink("Catégories", "Index", "Categories", new { area = "" }, new { @class = "nav-link" })
                     </li>
+                    }
                     <li class="nav-item">
-                        @*<a class="" href="#">Link</a>*@
                         @Html.ActionLink("Inscriptions", "Index", "Inscriptions", new { area = "" }, new { @class = "nav-link" })
                     </li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -56,7 +53,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - CourseApp</p>
         </footer>
     </div>
 

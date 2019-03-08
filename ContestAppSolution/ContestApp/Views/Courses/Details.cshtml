@@ -1,4 +1,4 @@
-﻿@model  ContestApp.Models.CreateEditEpreuveViewModel
+﻿@model  BO.Models.Epreuve
 
 @{
     ViewBag.Title = "Details";
@@ -49,8 +49,26 @@
             @Html.DisplayFor(model => model.Ville.Nom)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Ville)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ville.Nom)
+        </dd>
+        <dt>
+            Liste des POI
+        </dt>
+
+        <dd>
+            @foreach (var poi in Model.listePointOfInterests)
+            {
+            <div>@poi.Nom - @poi.Distance</div>
+            }
+        </dd>
     </dl>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

@@ -17,6 +17,7 @@ namespace BO.Models
         public DateTime Date { get; set; }
         public Boolean Inscription { get; set; }
         public virtual Ville Ville { get; set; }
+        public virtual List<PointOfInterest> listePointOfInterests { get; set; }
 
     }
 }

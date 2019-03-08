@@ -108,17 +108,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="ContextContest.cs" />
-    <Compile Include="Migrations\201903081021220_modificationinscription.cs" />
-    <Compile Include="Migrations\201903081021220_modificationinscription.Designer.cs">
-      <DependentUpon>201903081021220_modificationinscription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903081057359_inscriptionid.cs" />
-    <Compile Include="Migrations\201903081057359_inscriptionid.Designer.cs">
-      <DependentUpon>201903081057359_inscriptionid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903080924227_deleteProfil.cs" />
-    <Compile Include="Migrations\201903080924227_deleteProfil.Designer.cs">
-      <DependentUpon>201903080924227_deleteProfil.cs</DependentUpon>
+    <Compile Include="Migrations\201903081119231_Base.cs" />
+    <Compile Include="Migrations\201903081119231_Base.Designer.cs">
+      <DependentUpon>201903081119231_Base.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201903081401503_ModifResultatTemps.cs" />
     <Compile Include="Migrations\201903081401503_ModifResultatTemps.Designer.cs">
@@ -145,14 +137,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903081021220_modificationinscription.resx">
-      <DependentUpon>201903081021220_modificationinscription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903081057359_inscriptionid.resx">
-      <DependentUpon>201903081057359_inscriptionid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903080924227_deleteProfil.resx">
-      <DependentUpon>201903080924227_deleteProfil.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903081119231_Base.resx">
+      <DependentUpon>201903081119231_Base.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903081401503_ModifResultatTemps.resx">
       <DependentUpon>201903081401503_ModifResultatTemps.cs</DependentUpon>

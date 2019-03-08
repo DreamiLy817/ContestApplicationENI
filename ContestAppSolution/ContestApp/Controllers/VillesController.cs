@@ -14,6 +14,7 @@ using ContestApp.Models;
 
 namespace ContestApp.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class VillesController : Controller
     {
         private IRepository<Ville> _repository;

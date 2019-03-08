@@ -19,6 +19,7 @@ namespace ContestApp.Models
             // Ajouter les revendications personnalisées de l’utilisateur ici
             return userIdentity;
         }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -32,5 +33,11 @@ namespace ContestApp.Models
         {
             return new ApplicationDbContext();
         }
+    }
+
+    public class RoleNames
+    {
+        public const string Admin = "Admin";
+        public const string User = "User";
     }
 }
