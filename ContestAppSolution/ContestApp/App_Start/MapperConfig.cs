@@ -61,6 +61,9 @@ namespace ContestApp.App_Start
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
 
+                config.CreateMap<Inscription, InscriptionViewModel>();
+                config.CreateMap<InscriptionViewModel, Inscription>();
+
             });
         }
     }
