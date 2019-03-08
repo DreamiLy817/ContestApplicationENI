@@ -49,8 +49,8 @@ namespace ContestApp.App_Start
                     Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
 
                     Ville villeActuelle = villeRepository.Get(vm.VilleId);
-                    
-                
+               
+
                     if (villeActuelle != null)
                     {
                         villeActuelle = modele.Ville;
@@ -60,6 +60,34 @@ namespace ContestApp.App_Start
 
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
+
+                config.CreateMap<Resultat, ResultatViewModel>()
+                    .ForMember(vm => vm.EpreuveId, o => o.Ignore())
+                    .AfterMap((modele, vm) =>
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        vm.EpreuveId = epreuveRepository.GetAll(e => e.Id == modele.Epreuve?.Id).FirstOrDefault()?.Id;
+
+                       
+                    });
+
+                config.CreateMap<ResultatViewModel, Resultat>()
+                    .AfterMap((vm, modele) => 
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        Epreuve epreuveActuelle = epreuveRepository.Get(vm.EpreuveId);
+
+                        if (epreuveActuelle != null)
+                        {
+                            epreuveActuelle = modele.Epreuve;
+                        }
+
+                    });
+
+                config.CreateMap<Epreuve, EpreuveViewModel>();
+                config.CreateMap<EpreuveViewModel, Epreuve>();
 
             });
         }
