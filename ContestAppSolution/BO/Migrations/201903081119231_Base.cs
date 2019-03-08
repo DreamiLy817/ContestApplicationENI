@@ -3,7 +3,7 @@ namespace BO.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class modificationinscription : DbMigration
+    public partial class Base : DbMigration
     {
         public override void Up()
         {
@@ -32,28 +32,6 @@ namespace BO.Migrations
                 .Index(t => t.VilleId);
             
             CreateTable(
-                "dbo.Villes",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nom = c.String(),
-                        CodePostal = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Inscriptions",
-                c => new
-                    {
-                        UtilisateurName = c.String(nullable: false, maxLength: 128),
-                        dateInscription = c.DateTime(nullable: false),
-                        Epreuve_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.UtilisateurName)
-                .ForeignKey("dbo.Epreuves", t => t.Epreuve_Id)
-                .Index(t => t.Epreuve_Id);
-            
-            CreateTable(
                 "dbo.PointOfInterests",
                 c => new
                     {
@@ -70,52 +48,59 @@ namespace BO.Migrations
                 .Index(t => t.Epreuve_Id);
             
             CreateTable(
-                "dbo.Profils",
+                "dbo.Villes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Nom = c.String(),
-                        Prenom = c.String(),
+                        CodePostal = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Inscriptions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UtilisateurName = c.String(),
+                        dateInscription = c.DateTime(nullable: false),
+                        Epreuve_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Epreuves", t => t.Epreuve_Id)
+                .Index(t => t.Epreuve_Id);
             
             CreateTable(
                 "dbo.Resultats",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ProfilId = c.Int(nullable: false),
                         EpreuveId = c.Int(nullable: false),
                         Temps = c.DateTime(nullable: false),
                         Positionfinale = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Epreuves", t => t.EpreuveId, cascadeDelete: true)
-                .ForeignKey("dbo.Profils", t => t.ProfilId, cascadeDelete: true)
-                .Index(t => t.ProfilId)
                 .Index(t => t.EpreuveId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Resultats", "ProfilId", "dbo.Profils");
             DropForeignKey("dbo.Resultats", "EpreuveId", "dbo.Epreuves");
-            DropForeignKey("dbo.PointOfInterests", "Epreuve_Id", "dbo.Epreuves");
-            DropForeignKey("dbo.PointOfInterests", "Categorie_Id", "dbo.Categories");
             DropForeignKey("dbo.Inscriptions", "Epreuve_Id", "dbo.Epreuves");
             DropForeignKey("dbo.Epreuves", "VilleId", "dbo.Villes");
+            DropForeignKey("dbo.PointOfInterests", "Epreuve_Id", "dbo.Epreuves");
+            DropForeignKey("dbo.PointOfInterests", "Categorie_Id", "dbo.Categories");
             DropIndex("dbo.Resultats", new[] { "EpreuveId" });
-            DropIndex("dbo.Resultats", new[] { "ProfilId" });
+            DropIndex("dbo.Inscriptions", new[] { "Epreuve_Id" });
             DropIndex("dbo.PointOfInterests", new[] { "Epreuve_Id" });
             DropIndex("dbo.PointOfInterests", new[] { "Categorie_Id" });
-            DropIndex("dbo.Inscriptions", new[] { "Epreuve_Id" });
             DropIndex("dbo.Epreuves", new[] { "VilleId" });
             DropTable("dbo.Resultats");
-            DropTable("dbo.Profils");
-            DropTable("dbo.PointOfInterests");
             DropTable("dbo.Inscriptions");
             DropTable("dbo.Villes");
+            DropTable("dbo.PointOfInterests");
             DropTable("dbo.Epreuves");
             DropTable("dbo.Categories");
         }

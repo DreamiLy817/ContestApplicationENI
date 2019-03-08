@@ -125,7 +125,7 @@ namespace ContestApp.Controllers
                 return HttpNotFound();
             }
 
-            return View(course.Map<CourseViewModel>());
+            return View(course.Map<CreateEditEpreuveViewModel>());
         }
 
 

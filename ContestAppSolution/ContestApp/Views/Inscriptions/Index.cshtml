@@ -1,10 +1,10 @@
-﻿@model IEnumerable<ContestApp.Models.InscriptionViewModel>
+﻿@model IEnumerable<BO.Models.Inscription>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inscription";
 }
 
-<h2>Index</h2>
+<h2>Inscription</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,19 +12,29 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.epreuveId)
+            @Html.DisplayNameFor(model => model.Epreuve)
         </th>
+        @if (User.IsInRole("Administrator"))
+        {
+        <th>
+            @Html.DisplayNameFor(model => model.UtilisateurName)
+        </th>
+        }
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.epreuveId)
+            @Html.DisplayFor(modelItem => item.Epreuve.Nom)
         </td>
+        @if (User.IsInRole("Administrator"))
+        {
+        <th>
+            @Html.DisplayFor(modelItem => item.UtilisateurName)
+        </th>
+        }
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
