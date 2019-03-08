@@ -13,9 +13,9 @@ namespace BO.Models
         public int Id { get; set; }
         [ForeignKey(nameof(Epreuve))]
         public int EpreuveId { get; set; }
-        public DateTime Temps { get; set; }
+        public TimeSpan Temps { get; set; }
         public int Positionfinale { get; set; }
-        public Epreuve Epreuve { get; set; }
+        public virtual Epreuve Epreuve { get; set; }
 
     }
 }

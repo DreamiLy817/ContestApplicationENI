@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ContestApp.Models.ResultatViewModel>
+﻿@model IEnumerable<BO.Models.Resultat>
 
 @{
     ViewBag.Title = "Index";
@@ -15,9 +15,6 @@
             @Html.DisplayNameFor(model => model.Epreuve.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Profil.Nom)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Temps)
         </th>
         <th>
@@ -30,9 +27,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Epreuve.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profil.Nom)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Temps)
