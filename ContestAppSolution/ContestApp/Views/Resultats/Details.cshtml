@@ -1,0 +1,50 @@
+﻿@model BO.Models.Resultat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Resultat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Epreuve.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Epreuve.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profil.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profil.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Temps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Temps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Positionfinale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Positionfinale)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

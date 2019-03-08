@@ -7,13 +7,13 @@ namespace BO.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addProfilAndResultat : IMigrationMetadata
+    public sealed partial class deleteProfil : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addProfilAndResultat));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(deleteProfil));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903071341096_addProfilAndResultat"; }
+            get { return "201903080924227_deleteProfil"; }
         }
         
         string IMigrationMetadata.Source

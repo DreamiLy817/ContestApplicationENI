@@ -7,13 +7,13 @@ namespace BO.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initDB : IMigrationMetadata
+    public sealed partial class inscriptionid : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inscriptionid));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903061317597_initDB"; }
+            get { return "201903081057359_inscriptionid"; }
         }
         
         string IMigrationMetadata.Source

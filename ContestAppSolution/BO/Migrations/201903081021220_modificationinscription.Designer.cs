@@ -7,13 +7,13 @@ namespace BO.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class deleteUserAndRoleModels : IMigrationMetadata
+    public sealed partial class modificationinscription : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(deleteUserAndRoleModels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(modificationinscription));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903070833450_deleteUserAndRoleModels"; }
+            get { return "201903081021220_modificationinscription"; }
         }
         
         string IMigrationMetadata.Source

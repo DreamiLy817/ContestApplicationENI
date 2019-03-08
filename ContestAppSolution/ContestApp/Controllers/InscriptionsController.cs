@@ -6,84 +6,74 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using BO;
 using BO.Models;
-using ContestApp.Models;
 using BO.Repository;
+using ContestApp.Models;
 using ContestApp.Extensions;
 
 namespace ContestApp.Controllers
 {
-    [Authorize(Roles = "Administrator")]
-    public class CoursesController : Controller
+    public class InscriptionsController : Controller
     {
-        private IRepository<Course> _repository;
-
-        public CoursesController(IRepository<Course> repository)
+        private IRepository<Inscription> _repository;
+        public InscriptionsController(IRepository<Inscription> repository)
         {
             this._repository = repository;
         }
 
-        // GET: Courses
+        // GET: Inscriptions
         public ActionResult Index()
         {
-            //var epreuve = db.Course.ToList();
-            //epreuve.Select(e => Mapper.Map<CourseViewModel>(e))
-            var courses = this._repository.GetAll();
-            return View(courses.Select(c => c.Map<CreateEditEpreuveViewModel>()));
+         
+            var inscription = this._repository.GetAll();
+            return View(inscription.Select(c => c.Map<InscriptionViewModel>()));
         }
-        
-        // GET: Courses/Details/5
+
+
+        // GET: Inscriptions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = this._repository.Get(id);
-            if (course == null)
+            Inscription inscription = this._repository.Get(id);
+            if (inscription == null)
             {
                 return HttpNotFound();
             }
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Epreuve epreuve = db.Epreuves.Find(id);
-            //if (epreuve == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            return View(course);
+         
+            return View(inscription.Map<InscriptionViewModel>());
         }
 
-        // GET: Courses/Create
+        // GET: Inscriptions/Create
         public ActionResult Create()
         {
-            Course course = new Course();
-            return View("CreateEdit", course.Map<CreateEditEpreuveViewModel>());
+            Inscription inscription = new Inscription();
+            return View("CreateEdit", inscription.Map<InscriptionViewModel>());
         }
 
 
-        // GET: Courses/Edit/5
+        // GET: Inscriptions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Epreuve epreuve = this._repository.Get(id);
-            if (epreuve == null)
+            Inscription inscription = this._repository.Get(id);
+            if (inscription == null)
             {
                 return HttpNotFound();
             }
 
-            return View("CreateEdit", epreuve.Map<CreateEditEpreuveViewModel>());
+            return View("CreateEdit", inscription.Map<InscriptionViewModel>());
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateEdit(CreateEditEpreuveViewModel epreuveVm)
+        public ActionResult CreateEdit(InscriptionViewModel inscriptionVm)
         {
             /*
             //on instancie un objetBD à partir du view model récupéré en param
@@ -92,44 +82,45 @@ namespace ContestApp.Controllers
             //on redirige à la page index
             //sinon on retourne la view avec le view model de course
             */
-            Course course = this._repository.Get(epreuveVm.Id);
+            Inscription inscription = this._repository.Get(inscriptionVm.Id);
             if (ModelState.IsValid)
             {
 
-                if (course == null)
+                if (inscription == null)
                 {
-                    course = new Course();
-                    this._repository.Create(course);
+                    inscription = new Inscription();
+                    this._repository.Create(inscription);
+                    inscription.dateInscription = DateTime.Now;
+                    inscription.UtilisateurName = User.Identity.Name;
                 }
 
-                epreuveVm.Map(course);
+                inscriptionVm.Map(inscription);
 
                 this._repository.Commit();
                 return RedirectToAction(nameof(this.Index));
             }
-            return View("CreateEdit", epreuveVm);
+            return View("CreateEdit", inscriptionVm);
         }
 
 
-
-        // GET: Courses/Delete/5
+        // GET: Inscriptions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = this._repository.Get(id);
-            if (course == null)
+            Inscription inscription = this._repository.Get(id);
+            if (inscription == null)
             {
                 return HttpNotFound();
             }
 
-            return View(course.Map<CourseViewModel>());
+            return View(inscription.Map<InscriptionViewModel>());
         }
 
 
-        // POST: Courses/Delete/5
+        // POST: Inscriptions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -147,7 +138,6 @@ namespace ContestApp.Controllers
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return this.Delete(id);
             }
-
         }
 
         protected override void Dispose(bool disposing)

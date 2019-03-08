@@ -49,8 +49,8 @@ namespace ContestApp.App_Start
                     Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
 
                     Ville villeActuelle = villeRepository.Get(vm.VilleId);
-                    
-                
+               
+
                     if (villeActuelle != null)
                     {
                         villeActuelle = modele.Ville;
@@ -61,26 +61,38 @@ namespace ContestApp.App_Start
                 config.CreateMap<DisplayConfiguration, DisplayConfigurationViewModel>();
                 config.CreateMap<DisplayConfigurationViewModel, DisplayConfiguration>();
 
-                config.CreateMap<PointOfInterest, PointOfInterestViewModel>();
-                config.CreateMap<PointOfInterestViewModel, PointOfInterest>()
+
+                config.CreateMap<Inscription, InscriptionViewModel>();
+                config.CreateMap<InscriptionViewModel, Inscription>();
+
+                config.CreateMap<Resultat, ResultatViewModel>()
+                    .ForMember(vm => vm.EpreuveId, o => o.Ignore())
                     .AfterMap((modele, vm) =>
                     {
                         Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
-                        Epreuve epreuve = epreuveRepository.GetAll(e => e.Id == modele.EpreuveId).FirstOrDefault();
 
-                        if (epreuve != null)
-                        {
-                            vm.Epreuve = epreuve;
-                        }
+                        vm.EpreuveId = epreuveRepository.GetAll(e => e.Id == modele.Epreuve?.Id).FirstOrDefault()?.Id;
 
-                        Repository<Categorie> categorieRepository = UnityConfig.Container.Resolve<Repository<Categorie>>();
-                        Categorie categorie = categorieRepository.GetAll(c => c.Id == modele.CategorieId).FirstOrDefault();
-
-                        if (categorie != null)
-                        {
-                            vm.Categorie = categorie;
-                        }
+                       
                     });
+
+                config.CreateMap<ResultatViewModel, Resultat>()
+                    .AfterMap((vm, modele) => 
+                    {
+                        Repository<Epreuve> epreuveRepository = UnityConfig.Container.Resolve<Repository<Epreuve>>();
+
+                        Epreuve epreuveActuelle = epreuveRepository.Get(vm.EpreuveId);
+
+                        if (epreuveActuelle != null)
+                        {
+                            epreuveActuelle = modele.Epreuve;
+                        }
+
+                    });
+
+                config.CreateMap<Epreuve, EpreuveViewModel>();
+                config.CreateMap<EpreuveViewModel, Epreuve>();
+
 
             });
         }

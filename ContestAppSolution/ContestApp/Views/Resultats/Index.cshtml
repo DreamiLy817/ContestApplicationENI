@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ContestApp.Models.CreateEditEpreuveViewModel>
+﻿@model IEnumerable<ContestApp.Models.ResultatViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,19 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.DisplayNameFor(model => model.Epreuve.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Distance)
+            @Html.DisplayNameFor(model => model.Profil.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Temps)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Inscription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ville)
+            @Html.DisplayNameFor(model => model.Positionfinale)
         </th>
         <th></th>
     </tr>
@@ -32,19 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nom)
+            @Html.DisplayFor(modelItem => item.Epreuve.Nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Distance)
+            @Html.DisplayFor(modelItem => item.Profil.Nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(modelItem => item.Temps)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Inscription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ville.Nom)
+            @Html.DisplayFor(modelItem => item.Positionfinale)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
