@@ -49,11 +49,7 @@ namespace ContestApp.App_Start
                     Repository<Ville> villeRepository = UnityConfig.Container.Resolve<Repository<Ville>>();
 
                     Ville villeActuelle = villeRepository.Get(vm.VilleId);
-                    if (
-                        villeActuelle == null)
-                    {
-                        throw new Exception("On ne peut pas sélectionner une ville inexistante");
-                    }
+               
 
                     if (villeActuelle != null)
                     {
@@ -87,10 +83,6 @@ namespace ContestApp.App_Start
 
                         Epreuve epreuveActuelle = epreuveRepository.Get(vm.EpreuveId);
 
-                        if (epreuveActuelle == null)
-                        {
-                            throw new Exception("On ne peut pas sélectionner une épreuve inexistante");
-                        }
                         if (epreuveActuelle != null)
                         {
                             epreuveActuelle = modele.Epreuve;
@@ -100,10 +92,7 @@ namespace ContestApp.App_Start
 
                         Profil profilActuelle = profilRepository.Get(vm.ProfilId);
 
-                        if (profilActuelle == null)
-                        {
-                            throw new Exception("On ne peut pas sélectionner un utilisateur inexistante");
-                        }
+                       
                         if (profilActuelle != null)
                         {
                             profilActuelle = modele.Profil;
